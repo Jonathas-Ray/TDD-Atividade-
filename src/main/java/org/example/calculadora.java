@@ -17,4 +17,12 @@ public class calculadora {
         //FLOAT E DOUBLE CONSIDERAM 10/0 = INFINITO E INFINITO=NÚMERO
         return a / b;
     }
+
+    public static double desconto(int valor, int porcentagem){
+        return valor - (valor * (porcentagem/100.0));
+    }
+
+    public static double desconto(int valor, boolean vip){
+        return vip? valor - (valor * 0.15) : valor;
+    }
 }
