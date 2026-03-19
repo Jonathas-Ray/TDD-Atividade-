@@ -1,6 +1,7 @@
 package org.example.userModule;
 
 import lombok.NonNull;
+import org.example.vendasModule.Produto;
 
 import java.util.regex.Pattern;
 
@@ -48,4 +49,22 @@ public class UserApplication {
         return true;
     }
 
+    public boolean verificarCarrinho(String email, String produto){
+        return repository.verificarCarrinho(email, produto);
+    }
+
+    public void adicionaCarrinho(String nome, Produto produto) {
+        repository.adicionarProduto(nome, produto);
+    };
+
+    public void removerItem(String nome, Produto produto) {repository.removerProduto(nome, produto);}
+
+    public double verificarTotal(String email){
+        User user;
+        if (repository.findUserByEmail(email) != null) {
+            user = repository.findUserByEmail(email);
+            return repository.retornaValorTotal(user);
+        }
+        return -1;
+    }
 }
